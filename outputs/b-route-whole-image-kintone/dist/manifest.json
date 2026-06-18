@@ -1,0 +1,20 @@
+{
+  "route": "B",
+  "mode": "image-first whole-slide generation",
+  "runDir": "C:\\Users\\bxu\\dev\\cybozush\\cysh-style-ppt\\outputs\\b-route-whole-image-kintone",
+  "output": "C:\\Users\\bxu\\dev\\cybozush\\cysh-style-ppt\\outputs\\b-route-whole-image-kintone\\dist\\cybozu-kintone-loop-b-whole-image.pptx",
+  "slideCount": 4,
+  "slides": [
+    "00_cover.png",
+    "01_pain.png",
+    "02_loop.png",
+    "03_continue.png"
+  ],
+  "editableLayer": [
+    "work/text-lock.md",
+    "work/storyboard.md",
+    "prompts/*.md",
+    "PowerPoint notes"
+  ],
+  "pptxConstraint": "Each slide contains exactly one full-slide bitmap image; visible content is not natively editable."
+}

@@ -1,0 +1,23 @@
+{
+  "name": "cysh-style-ppt",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "kintone:list-attachments": "node scripts/kintone-list-attachments.mjs",
+    "kintone:download-pptx": "node scripts/kintone-download-pptx.mjs",
+    "validate:route-a": "node scripts/build-route-a-validation.mjs",
+    "assets:build-components": "node scripts/build-cybozu-components.mjs",
+    "demo:build-story": "node scripts/build-story-demo.mjs",
+    "demo:build-bitmap-story": "node scripts/build-bitmap-story-demo.mjs",
+    "demo:build-b-route-full": "node scripts/build-b-route-full-deck.mjs",
+    "demo:build-b-route-free": "node scripts/build-b-route-free-story-deck.mjs",
+    "demo:package-bitmap": "node scripts/package-bitmap-deck.mjs",
+    "demo:package-image-route-b": "node scripts/package-image-route-b-deck.mjs"
+  },
+  "dependencies": {
+    "@kintone/rest-api-client": "6.2.0",
+    "dotenv": "16.4.7",
+    "pptxgenjs": "4.0.1"
+  }
+}
