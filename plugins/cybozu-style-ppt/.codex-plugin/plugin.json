@@ -1,0 +1,38 @@
+{
+  "name": "cybozu-style-ppt",
+  "version": "0.1.0",
+  "description": "Create cybozu/kintone-inspired PowerPoint decks with editable Route A production and image-first Route B visual-story production.",
+  "author": {
+    "name": "2water"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "presentations",
+    "powerpoint",
+    "cybozu",
+    "kintone",
+    "slides",
+    "proposal",
+    "deck"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Cybozu Style PPT",
+    "shortDescription": "Create cybozu/kintone-style PPT decks with editable and image-first routes.",
+    "longDescription": "Cybozu Style PPT helps produce presentation decks that borrow cybozu/kintone visual language. It defines a shared Text Lock process, an editable Route A for business-document decks, and an image-first Route B for full-slide visual-story decks packaged as non-editable PPTX image containers with speaker notes.",
+    "developerName": "2water",
+    "category": "Presentation Design",
+    "capabilities": [
+      "Analyze",
+      "Design",
+      "Generate",
+      "Export"
+    ],
+    "defaultPrompt": [
+      "Create a cybozu/kintone-style editable proposal deck.",
+      "Make a Route B image-first visual-story deck.",
+      "Turn this kintone topic into a presentation."
+    ],
+    "brandColor": "#F5C400"
+  }
+}

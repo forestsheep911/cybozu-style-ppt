@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cybozu Style PPT"
-  short_description: "Editable cybozu-style PowerPoint decks"
-  default_prompt: "Create a cybozu-style PowerPoint deck from my product, audience, and message materials. Keep all slide elements editable."

@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import pptxgen from "pptxgenjs";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const assetDir = path.join(rootDir, "cybozu-style-ppt", "assets");
+const assetDir = path.join(rootDir, "plugins", "cybozu-style-ppt", "assets");
 const bitmapDir = path.join(assetDir, "bitmap-b");
 const outPath = process.env.BITMAP_DEMO_SOURCE_PATH
   ? path.resolve(rootDir, process.env.BITMAP_DEMO_SOURCE_PATH)

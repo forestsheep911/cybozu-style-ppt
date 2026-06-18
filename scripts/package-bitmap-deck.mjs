@@ -8,7 +8,7 @@ const defaultSlideDir = path.join(rootDir, "data", "processed", "style-analysis"
 const slideDir = process.env.BITMAP_SLIDE_DIR ? path.resolve(rootDir, process.env.BITMAP_SLIDE_DIR) : defaultSlideDir;
 const outPath = process.env.BITMAP_DECK_PATH
   ? path.resolve(rootDir, process.env.BITMAP_DECK_PATH)
-  : path.join(rootDir, "cybozu-style-ppt", "assets", "bitmap-b", "cybozu-story-demo-bitmap-only.pptx");
+  : path.join(rootDir, "plugins", "cybozu-style-ppt", "assets", "bitmap-b", "cybozu-story-demo-bitmap-only.pptx");
 const slideCount = Number.parseInt(process.env.BITMAP_SLIDE_COUNT || "6", 10);
 
 const notePresets = {

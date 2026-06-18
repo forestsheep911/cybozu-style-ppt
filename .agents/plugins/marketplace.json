@@ -1,0 +1,21 @@
+{
+  "name": "cybozu-style-ppt-dev",
+  "interface": {
+    "displayName": "Cybozu Style PPT (dev, local source)",
+    "description": "Development-only marketplace for testing the local cybozu-style-ppt plugin source in this repo."
+  },
+  "plugins": [
+    {
+      "name": "cybozu-style-ppt",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cybozu-style-ppt"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

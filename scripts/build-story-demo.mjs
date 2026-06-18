@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import pptxgen from "pptxgenjs";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const assetDir = path.join(rootDir, "cybozu-style-ppt", "assets");
+const assetDir = path.join(rootDir, "plugins", "cybozu-style-ppt", "assets");
 const outPath = process.env.STORY_DEMO_PATH
   ? path.resolve(rootDir, process.env.STORY_DEMO_PATH)
   : path.join(assetDir, "cybozu-story-demo-kintone-loop.pptx");
