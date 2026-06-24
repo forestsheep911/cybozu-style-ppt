@@ -11,7 +11,10 @@ Default to native, editable PPT elements for Route A. Do not flatten Route A sli
 
 Route A must not use native PowerPoint dots, lines, polygons, freeform paths, or stacked geometric shapes to draw representational art such as people, faces, mascots, devices, trucks, tools, clouds, buildings, product marks, or other real-world objects. That shape-drawing route is too weak for production-stage visual quality. Route A native drawing is allowed for information structure only: boxes, dividers, arrows, connectors, tables, simple charts, status chips, labels, frames, and abstract workflow/architecture nodes.
 
-Route B is the deliberate exception: it produces complete full-slide images when visual storytelling, first-glance comprehension, and free composition matter more than editability. In Route B, PowerPoint is only a delivery container for those generated full-slide images.
+Route B is the deliberate exception for image-first visual storytelling. It has two delivery modes:
+
+- `B-pure`: one complete generated full-slide image per page. PowerPoint is only a delivery container for those generated images.
+- `B-hybrid`: generated image backgrounds or generated partial visual regions, plus a small controlled layer of editable PPT overlays such as logos, page marks, title text, fixed CTA, compliance notes, or approved finished assets.
 
 ## Production Routes
 
@@ -28,16 +31,18 @@ Route A is native editable PPTX production:
 
 Prefer the combined Route A strategy: use A2 to preserve brand/style quality, use A1 for missing dynamic information components, use curated raster/vector assets for representational visuals, and reserve A4 for structural repair or precise template manipulation.
 
-Route B is image-first full-slide production:
+Route B is image-first visual production:
 
 - Route B starts from the shared Text Lock, not from Route A slide layouts. It expresses the locked claims and support content as complete generated slide images: text design, visual metaphor, small visual elements, scene, composition, and hierarchy are resolved inside one whole-slide image.
 - Use generated full-slide images when the user explicitly wants image-first output, when visual storytelling matters more than manual editability, or when the deck should feel like a designed visual narrative rather than an editable business document.
 - Route B is not an A-route beautification layer. It is an independent visual-story production route based on Text Lock, storyboard, full-slide image prompts, generated slide PNGs, and one-image-per-slide PPTX packaging.
 - Route B should inherit the topic, claims, audience, and brand cues from the source brief, but it should not inherit A-route slide layouts, card grids, left/right splits, or component structures unless they genuinely serve the visual idea.
+- Use `B-pure` when visual expression, one-off customization, composition freedom, and emotional storytelling matter more than downstream editability. This is strongest for highly customized cover pages, concept pages, mood scenes, pain scenes, and cinematic before/after pages, but logos, icons, product UI, and small exact text may drift if generated inside the image.
+- Use `B-hybrid` when the generated visual should carry atmosphere, scene, metaphor, or background composition, while user-adjustable or identity-sensitive elements remain editable in PPT. This is strongest for reusable customer variants: leave space for logos, customer names, title text, CTA, legal notes, or approved finished assets so the same visual can be quickly adapted for multiple users.
 - Route B may visually derive from approved people, object, mascot, and scene assets. It can generate new expressions, poses, gestures, camera angles, and scene variants as long as the audience can still recognize the asset family and role continuity from the source reference.
 - Route B derivation must preserve character continuity: key silhouette, face/hair cues, clothing color, role markers, and overall illustration family should remain stable unless the storyboard explicitly calls for contrast or change.
 - Route B must not freely alter identity assets. Logos, product marks, official brand characters, app icons, and product UI should be used only as verified references or preserved source assets; do not invent modified versions that could be mistaken for official marks.
-- If Route B is used, make clear that the main slide content is bitmap-final. Do not promise editable text, charts, shapes, or layout objects inside the slide image.
+- If Route B is used, make clear which mode is used. For `B-pure`, the main slide content is bitmap-final. For `B-hybrid`, the generated visual layer is bitmap-final, but the explicitly overlaid PPT objects remain editable and movable.
 - Use Route A for editable business-document decks: data, tables, legal copy, pricing, detailed implementation text, and frequently revised material. Use Route B for visual-narrative decks: covers, chapters, concepts, pain scenes, before/after changes, workflow metaphors, operating loops, proposal openers, and memorable story transitions.
 
 ## Workflow
@@ -99,12 +104,17 @@ Use this workflow when the user asks for `B方案`, `bitmap-b`, visual-first pro
    - `free-derivative`: generic objects, non-brand pictograms, and loose scene motifs can be adapted freely to the storyboard.
    - `continuity-locked`: people, character families, kintone-style helper figures, and recurring scene assets can gain new expressions or poses, but must keep recognizable silhouette, colors, role, and style.
    - `identity-locked`: logos, product marks, official brand characters, app icons, and product UI must not be redesigned, parodied, recolored, or mutated into pseudo-official variants.
-6. Generate one full-slide image per storyboard slide. The normal source image path should be `assets/generated-slides/<slide-id>.png` inside the run/output folder.
-7. Package the generated slide PNGs into PPTX only after all PNGs exist. The PPTX must contain exactly one full-slide image per slide and no native editable text boxes, charts, tables, shapes, labels, or manually arranged illustration pieces.
-8. Add speaker notes to the PPTX notes pane from the storyboard. Notes are the editable presenter layer; the slide itself is bitmap-final.
-9. Produce a preview/contact sheet from the generated PNGs and review it at thumbnail size and full size.
-10. Audit the PPTX. A valid B-route PPTX passes only when each slide contains one full-slide picture and no native editable slide content beyond notes.
-11. Name outputs specifically. Suggested B-route run shape:
+6. Choose `B-pure` or `B-hybrid` per deck or per slide before generation:
+   - For `B-pure`, generate one complete full-slide image per storyboard slide.
+   - For `B-hybrid`, generate the visual background or partial scene with intentional safe space for editable overlays. Record each overlay's asset, role, approximate position, and editability contract.
+7. Generate the image asset for each storyboard slide. The normal source image path should be `assets/generated-slides/<slide-id>.png` inside the run/output folder.
+8. Package the generated images into PPTX only after all PNGs exist:
+   - `B-pure` PPTX must contain exactly one full-slide image per slide and no native editable visible content beyond notes.
+   - `B-hybrid` PPTX may contain the generated image layer plus a small number of explicit editable overlays: logos, page marks, title text, fixed CTA, compliance notes, or approved finished assets. Do not add arbitrary editable slide decoration that turns the page back into Route A.
+9. Add speaker notes to the PPTX notes pane from the storyboard. Notes are the editable presenter layer; in `B-pure` the slide itself is bitmap-final; in `B-hybrid` only the overlay layer is editable.
+10. Produce a preview/contact sheet from the generated PNGs and final PPTX renders; review at thumbnail size and full size.
+11. Audit the PPTX. A valid `B-pure` route passes only when each slide contains one full-slide picture and no native editable visible slide content beyond notes. A valid `B-hybrid` route passes when all editable overlays are intentional, listed, and limited to the agreed overlay contract.
+12. Name outputs specifically. Suggested B-route run shape:
    - `work/text-lock.md`
    - `work/storyboard.md`
    - `prompts/README.md`
@@ -120,7 +130,8 @@ Route B QA gates:
 - The deck should not look like an A-route deck with nicer pictures placed into the same boxes. If the contact sheet still reads as card grids, left/right business slides, dashboard placeholders, or manually assembled PPT objects, Route B has not been used fully.
 - No slide should be driven by decorative imagery alone. Each slide needs a memorable claim and a visual metaphor that proves or dramatizes that claim.
 - Recurring people, helper characters, objects, and scenes must maintain visible continuity across slides. New expressions or poses are welcome only when the viewer can still recognize the same source character or asset family.
-- Identity-locked assets must remain cleanly bounded. Do not generate altered logos, fake app icons, pseudo-official product marks, or distorted product UI as part of a Route B image.
+- Identity-locked assets must remain cleanly bounded. In `B-pure`, avoid putting exact logos, product marks, app icons, and product UI inside the generated image unless the risk is acceptable for a draft. In `B-hybrid`, prefer adding those assets as separate PPT picture overlays so they remain crisp, movable, and unmutated.
+- `B-hybrid` overlays must be few and purposeful. If the slide gains many editable cards, arrows, labels, and charts, it has crossed back into Route A and should be built as Route A instead.
 - First-glance comprehension matters more than editability. A B-route slide passes only if the theme is clear before reading all body text.
 - Do not use Route B for pages whose main risk is maintenance accuracy: numbers, long tables, quotations, pricing, legal notes, or frequently revised implementation details.
 - Notes must be present in the PPTX package for production demos, not only in external planning text.
@@ -171,7 +182,7 @@ Read these only when needed:
 
 When creating a Route A deck, deliver the editable PPTX and mention any non-editable raster/vector assets used. If a slide intentionally uses a screenshot or illustration asset, keep it as a framed/supporting content asset rather than the whole slide unless the user explicitly asks for a bitmap page.
 
-When creating a Route B deck, deliver it as a visual-story artifact made from generated full-slide images. The PPTX, if requested, is a non-editable image container with one full-slide image per page. Speaker notes are part of the deliverable. If source material is thin, produce a reasonable first draft and flag the exact missing inputs that would improve the next iteration.
+When creating a Route B deck, identify whether it is `B-pure` or `B-hybrid`. For `B-pure`, deliver it as a visual-story artifact made from generated full-slide images; the PPTX is a non-editable image container with one full-slide image per page. For `B-hybrid`, deliver the generated image layer plus the agreed editable overlay objects, and list those overlays in the manifest or review. Speaker notes are part of both deliverables. If source material is thin, produce a reasonable first draft and flag the exact missing inputs that would improve the next iteration.
 
 ## Bundled Assets
 
@@ -179,4 +190,4 @@ When creating a Route B deck, deliver it as a visual-story artifact made from ge
 - `../../assets/source-decks/ryo-materials-26.pptx`: copied source asset collection from `呂の素材集26.pptx`. Use as a visual/source deck for cybozu/kintone-adjacent tone and candidate small elements. See `../../references/ryo-materials-26-visual-catalog.md` and `../../references/ryo-materials-26-detailed-asset-catalog.csv` before using any asset.
 - `../../assets/characters/`: approved candidate transparent PNG character and scenario assets extracted from existing PPT materials. Use these as raster illustrations inside editable PPT layouts; keep labels, callouts, arrows, cards, and role chips as native PPT elements.
 - People, object, and cloud mascot drawings must not be recreated with native geometric PPT shapes. Production decks should use role/responsibility labels, approved screenshots, photos, verified source assets, or the approved character assets instead.
-- `../../assets/bitmap-b/`: Route B reference motifs and previous experiments. Use these to inform full-slide image prompts and style direction. Do not assemble Route B slides by placing these files as separate PPT objects; the intended B-route output is a complete generated slide image.
+- `../../assets/bitmap-b/`: Route B reference motifs and previous experiments. Use these to inform full-slide image prompts and style direction. Do not assemble Route B slides by manually placing many motif files as separate PPT objects. For `B-pure`, the intended output is one complete generated slide image. For `B-hybrid`, separate PPT overlays are limited to the explicit overlay contract such as logos, fixed titles, page marks, CTA, legal notes, or approved finished assets.
