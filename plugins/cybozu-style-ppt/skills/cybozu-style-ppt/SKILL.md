@@ -7,7 +7,9 @@ description: Create PowerPoint decks in a cybozu/kintone-inspired style, includi
 
 ## Core Rule
 
-Default to native, editable PPT elements for Route A. Do not flatten Route A slides into full-page screenshots. Use raster images only for product screenshots, illustration references, photos, or deliberate bitmap assets; build layout, text, buttons, cards, diagrams, charts, badges, and section markers as editable PPT objects.
+Default to native, editable PPT elements for Route A. Do not flatten Route A slides into full-page screenshots. Use raster images for people, objects, mascots, product screenshots, illustration references, photos, or deliberate bitmap assets; build layout, text, buttons, cards, diagrams, charts, badges, arrows, callouts, labels, and section markers as editable PPT objects.
+
+Route A must not use native PowerPoint dots, lines, polygons, freeform paths, or stacked geometric shapes to draw representational art such as people, faces, mascots, devices, trucks, tools, clouds, buildings, product marks, or other real-world objects. That shape-drawing route is too weak for production-stage visual quality. Route A native drawing is allowed for information structure only: boxes, dividers, arrows, connectors, tables, simple charts, status chips, labels, frames, and abstract workflow/architecture nodes.
 
 Route B is the deliberate exception: it produces complete full-slide images when visual storytelling, first-glance comprehension, and free composition matter more than editability. In Route B, PowerPoint is only a delivery container for those generated full-slide images.
 
@@ -21,8 +23,10 @@ Route A is native editable PPTX production:
 - A1: generate native PowerPoint elements with code when a slide or component must be built dynamically.
 - A2: reuse and adapt existing PPTX templates, layouts, and component pages whenever a suitable cybozu-style pattern exists.
 - A4: directly inspect or edit PPTX OOXML only as a low-level fallback for template duplication, structural cleanup, relationship fixes, or edits that high-level libraries cannot perform reliably.
+- Route A visual assets for people, objects, mascots, product-like marks, and scenes must come from approved raster/vector assets, verified source decks, product screenshots, photos, or user-provided files. Do not create those assets by drawing them from primitive PPT shapes.
+- Route A may use native PPT shapes for controlled business-presentation grammar: text boxes, arrows, connectors, callout boxes, card containers, process lanes, tables, charts, badges, UI mockup frames, and other abstract information structures.
 
-Prefer the combined Route A strategy: use A2 to preserve brand/style quality, use A1 for missing dynamic components, and reserve A4 for structural repair or precise template manipulation.
+Prefer the combined Route A strategy: use A2 to preserve brand/style quality, use A1 for missing dynamic information components, use curated raster/vector assets for representational visuals, and reserve A4 for structural repair or precise template manipulation.
 
 Route B is image-first full-slide production:
 
@@ -44,7 +48,7 @@ Route B is image-first full-slide production:
 5. Translate cybozu/kintone web style into PPT-native or visual-story patterns:
    - Large confident Japanese or Chinese headline with generous whitespace.
    - Warm yellow accents, black primary text, white or pale cream backgrounds, and restrained gray dividers.
-   - For Route A: rounded cards with light borders, simple shadows, clear grouped modules, and editable dashboard mockups.
+   - For Route A: rounded cards with light borders, simple shadows, clear grouped modules, editable dashboard mockups, and curated bitmap/vector assets for people, objects, mascots, and scenes.
    - For Route B: claim-led typography, scene composition, small visual elements, metaphor, storyboard rhythm, and bitmap-final full-slide images.
    - Friendly but businesslike illustrations or pictograms, never decorative clutter.
 6. Build slides according to the chosen route's editability boundary.
@@ -135,8 +139,8 @@ Do not imitate weak source-deck habits such as crowded screenshots, tiny tables,
 - Canvas: 16:9 widescreen unless the user specifies another format.
 - Palette: kintone-like yellow as the primary accent, black/dark charcoal for text, white and pale warm backgrounds, light gray for borders and panels, and a small number of secondary colors for charts or status tags.
 - Typography: prefer clean sans-serif fonts available in PowerPoint. Use bold weight for headings, regular weight for body text, and avoid dense paragraphs.
-- Shapes: use 4-8 px corner radius equivalents for cards and buttons; use larger rounded containers only for dashboard mockups or intentional soft panels.
-- Icons: use simple line or filled icons where possible. Keep icon style consistent within a deck.
+- Shapes: use 4-8 px corner radius equivalents for cards and buttons; use larger rounded containers only for dashboard mockups or intentional soft panels. Do not use shape stacks to draw characters, mascots, objects, or branded marks.
+- Icons: use existing icon assets, verified source-deck icons, or a consistent external icon family where possible. Keep icon style consistent within a deck. Do not invent product-like icons with primitive shapes when an asset is available.
 - Data visuals: prefer editable bars, donut segments, status tags, timelines, and flow arrows over imported chart screenshots.
 
 ## Reference Files
@@ -156,14 +160,14 @@ Read these only when needed:
 
 ## Output Expectations
 
-When creating a Route A deck, deliver the editable PPTX and mention any non-editable raster assets used. If a slide intentionally uses a screenshot, keep it as a framed content asset rather than the whole slide.
+When creating a Route A deck, deliver the editable PPTX and mention any non-editable raster/vector assets used. If a slide intentionally uses a screenshot or illustration asset, keep it as a framed/supporting content asset rather than the whole slide unless the user explicitly asks for a bitmap page.
 
 When creating a Route B deck, deliver it as a visual-story artifact made from generated full-slide images. The PPTX, if requested, is a non-editable image container with one full-slide image per page. Speaker notes are part of the deliverable. If source material is thin, produce a reasonable first draft and flag the exact missing inputs that would improve the next iteration.
 
 ## Bundled Assets
 
-- `../../assets/cybozu-style-components.pptx`: editable Route A component library generated by `npm run assets:build-components`. Use it as the starting reference for native slide chrome, section pages, problem cards, app-pack layouts, workflow/process blocks, dashboard mockups with callouts, solution maps, product intro pages, industry proposal one-pagers, implementation paths, and role/responsibility labels. Treat it as v1: cleaner and more useful than the validation prototype, but still pending PowerPoint-rendered visual QA and approved icon assets.
-- `../../assets/source-decks/ryo-materials-26.pptx`: copied source素材集 from `呂の素材集26.pptx`. Use as a visual/source deck for cybozu/kintone-adjacent tone and candidate small elements. See `../../references/ryo-materials-26-visual-catalog.md` before using any asset.
+- `../../assets/cybozu-style-components.pptx`: editable Route A component library generated by `npm run assets:build-components`. Use it as the starting reference for native slide chrome, section pages, problem cards, app-pack layouts, workflow/process blocks, dashboard mockups with callouts, solution maps, product intro pages, industry proposal one-pagers, implementation paths, and role/responsibility labels. Treat it as v1: cleaner and more useful than the validation prototype, but still pending PowerPoint-rendered visual QA and approved icon assets. Do not promote any native-shape people or mascot candidates into production defaults.
+- `../../assets/source-decks/ryo-materials-26.pptx`: copied source asset collection from `呂の素材集26.pptx`. Use as a visual/source deck for cybozu/kintone-adjacent tone and candidate small elements. See `../../references/ryo-materials-26-visual-catalog.md` and `../../references/ryo-materials-26-detailed-asset-catalog.csv` before using any asset.
 - `../../assets/characters/`: approved candidate transparent PNG character and scenario assets extracted from existing PPT materials. Use these as raster illustrations inside editable PPT layouts; keep labels, callouts, arrows, cards, and role chips as native PPT elements.
-- People and cloud mascot drawings should not be recreated with native geometric PPT shapes. Production decks should use role/responsibility labels, approved screenshots, photos, or the approved character assets instead.
+- People, object, and cloud mascot drawings must not be recreated with native geometric PPT shapes. Production decks should use role/responsibility labels, approved screenshots, photos, verified source assets, or the approved character assets instead.
 - `../../assets/bitmap-b/`: Route B reference motifs and previous experiments. Use these to inform full-slide image prompts and style direction. Do not assemble Route B slides by placing these files as separate PPT objects; the intended B-route output is a complete generated slide image.
