@@ -1,0 +1,41 @@
+{
+  "theme": "kintone field feedback improvement loop",
+  "slideCount": 4,
+  "sharedInputs": [
+    "work/text-lock.md",
+    "work/storyboard.md"
+  ],
+  "routeA": {
+    "output": "C:\\Users\\bxu\\dev\\cybozush\\cybozu-style-ppt\\outputs\\ab-route-test-kintone-loop\\dist\\route-a-editable-kintone-loop.pptx",
+    "rule": "Editable PPT structure; people/helper/object visuals use curated raster assets, not primitive shape drawings.",
+    "sourceAssets": [
+      "RYO26-189",
+      "RYO26-187",
+      "RYO26-188",
+      "RYO26-219",
+      "RYO26-220",
+      "RYO26-230"
+    ]
+  },
+  "routeB": {
+    "output": "C:\\Users\\bxu\\dev\\cybozush\\cybozu-style-ppt\\outputs\\ab-route-test-kintone-loop\\dist\\route-b-image-kintone-loop.pptx",
+    "rule": "Generated full-slide bitmaps; recurring characters may be visually derived but should remain recognizable.",
+    "expectedImages": [
+      "assets/generated-slides/00_cover.png",
+      "assets/generated-slides/01_pain.png",
+      "assets/generated-slides/02_solution.png",
+      "assets/generated-slides/03_continue.png"
+    ]
+  },
+  "routeBHybrid": {
+    "output": "C:\\Users\\bxu\\dev\\cybozush\\cybozu-style-ppt\\outputs\\ab-route-test-kintone-loop\\dist\\route-b-hybrid-logo-overlay-kintone-loop.pptx",
+    "rule": "Generated full-slide bitmap background plus separate editable PPT image overlay for identity-locked logo placement.",
+    "editableOverlays": [
+      {
+        "slide": 2,
+        "asset": "RYO26-242 / image10.png",
+        "role": "cybozu logo corner mark"
+      }
+    ]
+  }
+}
