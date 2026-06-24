@@ -34,6 +34,9 @@ Route B is image-first full-slide production:
 - Use generated full-slide images when the user explicitly wants image-first output, when visual storytelling matters more than manual editability, or when the deck should feel like a designed visual narrative rather than an editable business document.
 - Route B is not an A-route beautification layer. It is an independent visual-story production route based on Text Lock, storyboard, full-slide image prompts, generated slide PNGs, and one-image-per-slide PPTX packaging.
 - Route B should inherit the topic, claims, audience, and brand cues from the source brief, but it should not inherit A-route slide layouts, card grids, left/right splits, or component structures unless they genuinely serve the visual idea.
+- Route B may visually derive from approved people, object, mascot, and scene assets. It can generate new expressions, poses, gestures, camera angles, and scene variants as long as the audience can still recognize the asset family and role continuity from the source reference.
+- Route B derivation must preserve character continuity: key silhouette, face/hair cues, clothing color, role markers, and overall illustration family should remain stable unless the storyboard explicitly calls for contrast or change.
+- Route B must not freely alter identity assets. Logos, product marks, official brand characters, app icons, and product UI should be used only as verified references or preserved source assets; do not invent modified versions that could be mistaken for official marks.
 - If Route B is used, make clear that the main slide content is bitmap-final. Do not promise editable text, charts, shapes, or layout objects inside the slide image.
 - Use Route A for editable business-document decks: data, tables, legal copy, pricing, detailed implementation text, and frequently revised material. Use Route B for visual-narrative decks: covers, chapters, concepts, pain scenes, before/after changes, workflow metaphors, operating loops, proposal openers, and memorable story transitions.
 
@@ -86,18 +89,22 @@ Use this workflow when the user asks for `B方案`, `bitmap-b`, visual-first pro
 
 1. Start from a claim list, not from A-route slide layouts. Each slide needs one sentence the audience should remember. Treat that sentence as the page's visual anchor, not merely as a title.
 2. Create a slide storyboard from the Text Lock. For each slide record: slide ID, title/claim, primary job, support points, speaker notes, and a visual metaphor. Do not include PowerPoint layout instructions.
-3. Convert each storyboard slide into a model-ready full-slide image prompt. The prompt must describe the whole 16:9 slide image, including composition, text placement, visual hierarchy, style, and negative constraints. Text, icons, small elements, scene objects, arrows, labels, and background belong inside the generated image, not as later PPT overlays.
-4. Use small visual asset families only as prompt references or style motifs, not as PPT objects to be manually arranged after generation. Current motif families are:
+3. Convert each storyboard slide into a model-ready full-slide image prompt. The prompt must describe the whole 16:9 slide image, including composition, text placement, visual hierarchy, style, source-reference assets, allowed variation, continuity constraints, and negative constraints. Text, icons, small elements, scene objects, arrows, labels, and background belong inside the generated image, not as later PPT overlays.
+4. Use small visual asset families as prompt references, identity/role anchors, or style motifs, not as PPT objects to be manually arranged after generation. Route B may expand a character or object family into additional expressions, poses, and scene variants when the new image still reads as the same family. Current motif families are:
    - `b-pain-workers.png`: pain / current-state burden / scattered work.
    - `b-loop-hub.png`: kintone loop / input-approval-notification-aggregation / solution concept.
    - `b-style-board.png`: route-B asset system / reusable motif explanation / method pages.
    - `b-cloud-helper.png`: operation / support / AI or helper / cover and closing atmosphere.
-5. Generate one full-slide image per storyboard slide. The normal source image path should be `assets/generated-slides/<slide-id>.png` inside the run/output folder.
-6. Package the generated slide PNGs into PPTX only after all PNGs exist. The PPTX must contain exactly one full-slide image per slide and no native editable text boxes, charts, tables, shapes, labels, or manually arranged illustration pieces.
-7. Add speaker notes to the PPTX notes pane from the storyboard. Notes are the editable presenter layer; the slide itself is bitmap-final.
-8. Produce a preview/contact sheet from the generated PNGs and review it at thumbnail size and full size.
-9. Audit the PPTX. A valid B-route PPTX passes only when each slide contains one full-slide picture and no native editable slide content beyond notes.
-10. Name outputs specifically. Suggested B-route run shape:
+5. For each source-reference asset used in generation, record whether it is `free-derivative`, `continuity-locked`, or `identity-locked`:
+   - `free-derivative`: generic objects, non-brand pictograms, and loose scene motifs can be adapted freely to the storyboard.
+   - `continuity-locked`: people, character families, kintone-style helper figures, and recurring scene assets can gain new expressions or poses, but must keep recognizable silhouette, colors, role, and style.
+   - `identity-locked`: logos, product marks, official brand characters, app icons, and product UI must not be redesigned, parodied, recolored, or mutated into pseudo-official variants.
+6. Generate one full-slide image per storyboard slide. The normal source image path should be `assets/generated-slides/<slide-id>.png` inside the run/output folder.
+7. Package the generated slide PNGs into PPTX only after all PNGs exist. The PPTX must contain exactly one full-slide image per slide and no native editable text boxes, charts, tables, shapes, labels, or manually arranged illustration pieces.
+8. Add speaker notes to the PPTX notes pane from the storyboard. Notes are the editable presenter layer; the slide itself is bitmap-final.
+9. Produce a preview/contact sheet from the generated PNGs and review it at thumbnail size and full size.
+10. Audit the PPTX. A valid B-route PPTX passes only when each slide contains one full-slide picture and no native editable slide content beyond notes.
+11. Name outputs specifically. Suggested B-route run shape:
    - `work/text-lock.md`
    - `work/storyboard.md`
    - `prompts/README.md`
@@ -112,6 +119,8 @@ Route B QA gates:
 - The deck should not look like isolated one-off images; the contact sheet needs a consistent but varied visual system, like a coherent visual storybook or editorial campaign.
 - The deck should not look like an A-route deck with nicer pictures placed into the same boxes. If the contact sheet still reads as card grids, left/right business slides, dashboard placeholders, or manually assembled PPT objects, Route B has not been used fully.
 - No slide should be driven by decorative imagery alone. Each slide needs a memorable claim and a visual metaphor that proves or dramatizes that claim.
+- Recurring people, helper characters, objects, and scenes must maintain visible continuity across slides. New expressions or poses are welcome only when the viewer can still recognize the same source character or asset family.
+- Identity-locked assets must remain cleanly bounded. Do not generate altered logos, fake app icons, pseudo-official product marks, or distorted product UI as part of a Route B image.
 - First-glance comprehension matters more than editability. A B-route slide passes only if the theme is clear before reading all body text.
 - Do not use Route B for pages whose main risk is maintenance accuracy: numbers, long tables, quotations, pricing, legal notes, or frequently revised implementation details.
 - Notes must be present in the PPTX package for production demos, not only in external planning text.
