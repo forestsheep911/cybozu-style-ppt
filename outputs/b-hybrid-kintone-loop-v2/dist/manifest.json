@@ -1,0 +1,21 @@
+{
+  "theme": "kintone field feedback improvement loop",
+  "route": "B-hybrid",
+  "rule": "Generated image provides scene/background only; exact text, logo, and page marks are separate editable PowerPoint overlays.",
+  "slideCount": 4,
+  "output": "outputs/b-hybrid-kintone-loop-v2/dist/b-hybrid-kintone-loop-v2.pptx",
+  "backgroundImages": [
+    "assets/generated-backgrounds/00_cover_bg.png",
+    "assets/generated-backgrounds/01_pain_bg.png",
+    "assets/generated-backgrounds/02_solution_bg.png",
+    "assets/generated-backgrounds/03_continue_bg.png"
+  ],
+  "editableOverlays": [
+    "title text",
+    "supporting body text",
+    "cybozu logo image from RYO26 source deck image10.png",
+    "page mark",
+    "thin bottom rule"
+  ],
+  "textLock": "work/text-lock.md"
+}

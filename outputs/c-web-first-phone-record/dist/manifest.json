@@ -1,0 +1,26 @@
+{
+  "route": "C / web-first",
+  "modes": {
+    "live": "outputs/c-web-first-phone-record/web/index.html",
+    "cExport": "outputs/c-web-first-phone-record/dist/c-export-phone-record.pptx",
+    "cHybridExport": "outputs/c-web-first-phone-record/dist/c-hybrid-export-phone-record.pptx"
+  },
+  "source": "Reveal.js HTML/CSS/JS rendered to screenshots",
+  "screenshots": [
+    "outputs/c-web-first-phone-record/screenshots/full/00_pain.png",
+    "outputs/c-web-first-phone-record/screenshots/full/01_system.png",
+    "outputs/c-web-first-phone-record/screenshots/full/02_outcome.png"
+  ],
+  "hybridBackgrounds": [
+    "outputs/c-web-first-phone-record/screenshots/backgrounds/00_pain.png",
+    "outputs/c-web-first-phone-record/screenshots/backgrounds/01_system.png",
+    "outputs/c-web-first-phone-record/screenshots/backgrounds/02_outcome.png"
+  ],
+  "hybridEditableOverlays": [
+    "title",
+    "support copy",
+    "cybozu logo",
+    "page mark",
+    "bottom rule"
+  ]
+}

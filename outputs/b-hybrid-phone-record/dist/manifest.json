@@ -1,0 +1,15 @@
+{
+  "route": "B-hybrid",
+  "concept": "kintone phone call record management",
+  "output": "outputs/b-hybrid-phone-record/dist/b-hybrid-phone-record.pptx",
+  "background": "outputs/b-hybrid-phone-record/assets/generated-backgrounds/phone-record-bg.png",
+  "editableOverlays": [
+    "title",
+    "support copy",
+    "cybozu logo",
+    "page mark",
+    "bottom rule"
+  ],
+  "title": "Turn every phone call into a shared record",
+  "body": "kintone keeps call details, follow-up status, and customer context in one place."
+}

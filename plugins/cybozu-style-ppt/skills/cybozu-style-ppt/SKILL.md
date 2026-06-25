@@ -7,14 +7,16 @@ description: Create PowerPoint decks in a cybozu/kintone-inspired style, includi
 
 ## Core Rule
 
-Default to native, editable PPT elements for Route A. Do not flatten Route A slides into full-page screenshots. Use raster images for people, objects, mascots, product screenshots, illustration references, photos, or deliberate bitmap assets; build layout, text, buttons, cards, diagrams, charts, badges, arrows, callouts, labels, and section markers as editable PPT objects.
+Default to native, editable PPT elements for Route A / native-first. Do not flatten Route A slides into full-page screenshots. Use raster images for people, objects, mascots, product screenshots, illustration references, photos, or deliberate bitmap assets; build layout, text, buttons, cards, diagrams, charts, badges, arrows, callouts, labels, and section markers as editable PPT objects.
 
 Route A must not use native PowerPoint dots, lines, polygons, freeform paths, or stacked geometric shapes to draw representational art such as people, faces, mascots, devices, trucks, tools, clouds, buildings, product marks, or other real-world objects. That shape-drawing route is too weak for production-stage visual quality. Route A native drawing is allowed for information structure only: boxes, dividers, arrows, connectors, tables, simple charts, status chips, labels, frames, and abstract workflow/architecture nodes.
 
-Route B is the deliberate exception for image-first visual storytelling. It has two delivery modes:
+Route B / image-first is the deliberate exception for image-first visual storytelling. It has two delivery modes:
 
 - `B-pure`: one complete generated full-slide image per page. PowerPoint is only a delivery container for those generated images.
-- `B-hybrid`: generated image backgrounds or generated partial visual regions, plus a small controlled layer of editable PPT overlays such as logos, page marks, title text, fixed CTA, compliance notes, or approved finished assets.
+- `B-hybrid`: generated image backgrounds or generated partial visual regions, plus a small controlled layer of editable PPT overlays. Its positioning principle is: the generated background provides emotional force and scene comprehension; editable text overlays provide fast replacement of customer names, product names, claims, CTAs, and language variants; faithful logo/icon/product overlays preserve exact original design without model drift.
+
+Route C / web-first is an experimental route using Reveal.js/HTML/CSS/JS. Use it when motion, interactivity, browser-native layout, or local live presentation matters. It can be delivered as `C-live` browser presentation, `C-export` screenshot-based PPTX, or `C-hybrid-export` screenshot backgrounds plus editable PPT overlays. See `../../references/route-c-revealjs.md` before implementing Route C.
 
 ## Production Routes
 
@@ -38,21 +40,27 @@ Route B is image-first visual production:
 - Route B is not an A-route beautification layer. It is an independent visual-story production route based on Text Lock, storyboard, full-slide image prompts, generated slide PNGs, and one-image-per-slide PPTX packaging.
 - Route B should inherit the topic, claims, audience, and brand cues from the source brief, but it should not inherit A-route slide layouts, card grids, left/right splits, or component structures unless they genuinely serve the visual idea.
 - Use `B-pure` when visual expression, one-off customization, composition freedom, and emotional storytelling matter more than downstream editability. This is strongest for highly customized cover pages, concept pages, mood scenes, pain scenes, and cinematic before/after pages, but logos, icons, product UI, and small exact text may drift if generated inside the image.
-- Use `B-hybrid` when the generated visual should carry atmosphere, scene, metaphor, or background composition, while user-adjustable or identity-sensitive elements remain editable in PPT. This is strongest for reusable customer variants: leave space for logos, customer names, title text, CTA, legal notes, or approved finished assets so the same visual can be quickly adapted for multiple users.
+- Use `B-hybrid` when the generated visual should carry atmosphere, scene, metaphor, emotion, and background composition, while user-adjustable or identity-sensitive elements remain editable in PPT. This is strongest for reusable customer variants: leave space for logos, customer names, product names, title text, CTA, legal notes, or approved finished assets so the same visual can be quickly adapted for multiple users.
+- `B-hybrid` should treat each slide as three responsibility layers:
+  - Generated background layer: mood, storytelling, people, scene, emotional contrast, and broad business metaphor.
+  - Editable text layer: customer name, product name, claim, subtitle, CTA, legal/compliance text, slide number, and language-localized wording.
+  - Faithful asset layer: logos, app icons, product marks, official UI screenshots, and approved finished icons inserted as original PPT/image assets so they remain crisp, movable, and unchanged.
 - Route B may visually derive from approved people, object, mascot, and scene assets. It can generate new expressions, poses, gestures, camera angles, and scene variants as long as the audience can still recognize the asset family and role continuity from the source reference.
 - Route B derivation must preserve character continuity: key silhouette, face/hair cues, clothing color, role markers, and overall illustration family should remain stable unless the storyboard explicitly calls for contrast or change.
 - Route B must not freely alter identity assets. Logos, product marks, official brand characters, app icons, and product UI should be used only as verified references or preserved source assets; do not invent modified versions that could be mistaken for official marks.
 - If Route B is used, make clear which mode is used. For `B-pure`, the main slide content is bitmap-final. For `B-hybrid`, the generated visual layer is bitmap-final, but the explicitly overlaid PPT objects remain editable and movable.
-- Use Route A for editable business-document decks: data, tables, legal copy, pricing, detailed implementation text, and frequently revised material. Use Route B for visual-narrative decks: covers, chapters, concepts, pain scenes, before/after changes, workflow metaphors, operating loops, proposal openers, and memorable story transitions.
+- Route C is web-first visual production. Use `C-live` when the browser presentation itself is the artifact. Use `C-export` when PowerPoint is required but static screenshot fidelity is acceptable. Use `C-hybrid-export` when web-rendered backgrounds should be preserved but customer/product names, main titles, logos, page marks, or compliance text should remain editable in PPT.
+- Use Route A for editable business-document decks: data, tables, legal copy, pricing, detailed implementation text, and frequently revised material. Use Route B for visual-narrative static decks: covers, chapters, concepts, pain scenes, before/after changes, workflow metaphors, operating loops, proposal openers, and memorable story transitions. Use Route C for browser-native motion, interaction, step-by-step demos, and web-grade layout experiments that may later be exported to PPTX.
 
 ## Workflow
 
 1. Clarify the deck goal: audience, language, use case, desired action, required slide count or duration, and whether the deck is for pitch, proposal, training, demo, or executive review.
 2. Collect product inputs: product/service name, one-sentence value proposition, top 3 differentiators, target industries, decision makers, company size, conversion or next-step goal, proof points, existing URLs, screenshots, and brand assets.
 3. Create the Text Lock before choosing Route A or Route B. The Text Lock is the shared content/narrative final draft, not a layout draft.
-4. Choose Route A or Route B after the Text Lock is stable:
+4. Choose Route A, Route B, or experimental Route C after the Text Lock is stable:
    - Route A turns the Text Lock into an editable business PPT.
    - Route B turns the Text Lock into generated full-slide images, then packages those images into a non-editable visual-story PPTX.
+   - Route C turns the Text Lock into a Reveal.js/web deck, then optionally exports screenshots or screenshot-plus-overlay PPTX.
 5. Translate cybozu/kintone web style into PPT-native or visual-story patterns:
    - Large confident Japanese or Chinese headline with generous whitespace.
    - Warm yellow accents, black primary text, white or pale cream backgrounds, and restrained gray dividers.
@@ -106,7 +114,7 @@ Use this workflow when the user asks for `B方案`, `bitmap-b`, visual-first pro
    - `identity-locked`: logos, product marks, official brand characters, app icons, and product UI must not be redesigned, parodied, recolored, or mutated into pseudo-official variants.
 6. Choose `B-pure` or `B-hybrid` per deck or per slide before generation:
    - For `B-pure`, generate one complete full-slide image per storyboard slide.
-   - For `B-hybrid`, generate the visual background or partial scene with intentional safe space for editable overlays. Record each overlay's asset, role, approximate position, and editability contract.
+   - For `B-hybrid`, generate the visual background or partial scene with intentional safe space for editable overlays. The prompt should explicitly reserve safe areas for the text layer and faithful asset layer. Record each overlay's asset, role, approximate position, and editability contract.
 7. Generate the image asset for each storyboard slide. The normal source image path should be `assets/generated-slides/<slide-id>.png` inside the run/output folder.
 8. Package the generated images into PPTX only after all PNGs exist:
    - `B-pure` PPTX must contain exactly one full-slide image per slide and no native editable visible content beyond notes.
@@ -132,6 +140,7 @@ Route B QA gates:
 - Recurring people, helper characters, objects, and scenes must maintain visible continuity across slides. New expressions or poses are welcome only when the viewer can still recognize the same source character or asset family.
 - Identity-locked assets must remain cleanly bounded. In `B-pure`, avoid putting exact logos, product marks, app icons, and product UI inside the generated image unless the risk is acceptable for a draft. In `B-hybrid`, prefer adding those assets as separate PPT picture overlays so they remain crisp, movable, and unmutated.
 - `B-hybrid` overlays must be few and purposeful. If the slide gains many editable cards, arrows, labels, and charts, it has crossed back into Route A and should be built as Route A instead.
+- `B-hybrid` must preserve the layer contract: background for impact, editable text for fast customer/product/language switching, faithful assets for exact logo/icon/product appearance. Do not ask the image model to recreate official logos, product icons, customer marks, exact UI, or final slide copy when those elements can be overlaid.
 - First-glance comprehension matters more than editability. A B-route slide passes only if the theme is clear before reading all body text.
 - Do not use Route B for pages whose main risk is maintenance accuracy: numbers, long tables, quotations, pricing, legal notes, or frequently revised implementation details.
 - Notes must be present in the PPTX package for production demos, not only in external planning text.
@@ -168,7 +177,9 @@ Do not imitate weak source-deck habits such as crowded screenshots, tiny tables,
 Read these only when needed:
 
 - `../../references/ppt-style-notes.md`: condensed guidance extracted from the initial teammate material and screenshots.
-- `../../references/production-routes.md`: Route A/Route B strategy for native editable PPTX versus image-first output.
+- `../../references/production-routes.md`: Route A/Route B/Route C strategy for native editable PPTX, image-first output, and web-first presentation output.
+- `../../references/route-c-revealjs.md`: experimental Reveal.js route for C-live, C-export, and C-hybrid-export.
+- `../../references/route-c-experiment-plan.md`: planned Route C experiment batches, including C-live, C-export, C-hybrid-export, C-fragment-export, C-component-export, and native reconstruction spike.
 - `../../references/route-a-validation.md`: first Route A editable-PPTX validation result and next validation step.
 - `../../references/source-material-plan.md`: plan for inspecting future PPT/PDF source batches and turning repeated cybozu-style elements into reusable editable assets.
 - `../../references/source-quality-assessment.md`: judgment that the PPTX corpus is useful for brand cues but not a design-quality benchmark.

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call Record Board Component</title>
+    <link rel="stylesheet" href="./src/component.css" />
+  </head>
+  <body>
+    <main class="component-stage">
+      <section class="call-board" aria-label="Call record board">
+        <header>
+          <span class="app-icon">☎</span>
+          <div>
+            <h1>Call Records</h1>
+            <p>Shared phone follow-up status</p>
+          </div>
+          <button>New record</button>
+        </header>
+        <div class="row head">
+          <span>Customer</span>
+          <span>Topic</span>
+          <span>Status</span>
+          <span>Owner</span>
+        </div>
+        <div class="row">
+          <span>Customer A</span>
+          <span>Repair request</span>
+          <b class="status open">Open</b>
+          <span>Tanaka</span>
+        </div>
+        <div class="row">
+          <span>Customer B</span>
+          <span>Delivery date</span>
+          <b class="status progress">Assigned</b>
+          <span>Sato</span>
+        </div>
+        <div class="row">
+          <span>Customer C</span>
+          <span>Contract question</span>
+          <b class="status done">Done</b>
+          <span>Kimura</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
