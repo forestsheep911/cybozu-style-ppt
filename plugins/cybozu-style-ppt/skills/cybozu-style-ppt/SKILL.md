@@ -1,6 +1,6 @@
 ---
 name: cybozu-style-ppt
-description: Create PowerPoint decks in a cybozu/kintone-inspired style, including editable Route A decks and image-first Route B visual-story decks. Use when Codex needs to design or generate PPT/PPTX slides for product introductions, solution proposals, LP-to-deck conversions, service demos, event materials, sales narratives, or internal enablement decks that should borrow cybozu/kintone visual language.
+description: Create cybozu/kintone-inspired presentation artifacts, including editable Route A PPTX decks, image-first Route B visual-story decks, and experimental Route C web-first Reveal.js decks or screenshot-derived PPTX exports. Use when Codex needs to design or generate slides for product introductions, solution proposals, LP-to-deck conversions, service demos, event materials, sales narratives, or internal enablement decks that should borrow cybozu/kintone visual language.
 ---
 
 # Cybozu Style PPT
@@ -16,7 +16,7 @@ Route B / image-first is the deliberate exception for image-first visual storyte
 - `B-pure`: one complete generated full-slide image per page. PowerPoint is only a delivery container for those generated images.
 - `B-hybrid`: generated image backgrounds or generated partial visual regions, plus a small controlled layer of editable PPT overlays. Its positioning principle is: the generated background provides emotional force and scene comprehension; editable text overlays provide fast replacement of customer names, product names, claims, CTAs, and language variants; faithful logo/icon/product overlays preserve exact original design without model drift.
 
-Route C / web-first is an experimental route using Reveal.js/HTML/CSS/JS. Use it when motion, interactivity, browser-native layout, or local live presentation matters. It can be delivered as `C-live` browser presentation, `C-export` screenshot-based PPTX, or `C-hybrid-export` screenshot backgrounds plus editable PPT overlays. See `../../references/route-c-revealjs.md` before implementing Route C.
+Route C / web-first is an experimental route using Reveal.js/HTML/CSS/JS. Use it when motion, interactivity, browser-native layout, local live presentation, or web-rendered component quality matters. It can be delivered as `C-live` browser presentation, `C-export` screenshot-based PPTX, `C-hybrid-export` screenshot backgrounds plus editable PPT overlays, `C-fragment-export` selected reveal states, or `C-component-export` web-rendered modules inside native PPT pages. See `../../references/route-c-revealjs.md` before implementing Route C.
 
 ## Production Routes
 
@@ -49,7 +49,7 @@ Route B is image-first visual production:
 - Route B derivation must preserve character continuity: key silhouette, face/hair cues, clothing color, role markers, and overall illustration family should remain stable unless the storyboard explicitly calls for contrast or change.
 - Route B must not freely alter identity assets. Logos, product marks, official brand characters, app icons, and product UI should be used only as verified references or preserved source assets; do not invent modified versions that could be mistaken for official marks.
 - If Route B is used, make clear which mode is used. For `B-pure`, the main slide content is bitmap-final. For `B-hybrid`, the generated visual layer is bitmap-final, but the explicitly overlaid PPT objects remain editable and movable.
-- Route C is web-first visual production. Use `C-live` when the browser presentation itself is the artifact. Use `C-export` when PowerPoint is required but static screenshot fidelity is acceptable. Use `C-hybrid-export` when web-rendered backgrounds should be preserved but customer/product names, main titles, logos, page marks, or compliance text should remain editable in PPT.
+- Route C is web-first visual production. Use `C-live` when the browser presentation itself is the artifact. Use `C-export` when PowerPoint is required but static screenshot fidelity is acceptable. Use `C-hybrid-export` when web-rendered backgrounds should be preserved but customer/product names, main titles, logos, page marks, or compliance text should remain editable in PPT. Use `C-fragment-export` only for meaningful reveal states, and use `C-component-export` when a web-rendered UI/status/process module can strengthen an otherwise native PPT page.
 - Use Route A for editable business-document decks: data, tables, legal copy, pricing, detailed implementation text, and frequently revised material. Use Route B for visual-narrative static decks: covers, chapters, concepts, pain scenes, before/after changes, workflow metaphors, operating loops, proposal openers, and memorable story transitions. Use Route C for browser-native motion, interaction, step-by-step demos, and web-grade layout experiments that may later be exported to PPTX.
 
 ## Workflow
@@ -180,6 +180,7 @@ Read these only when needed:
 - `../../references/production-routes.md`: Route A/Route B/Route C strategy for native editable PPTX, image-first output, and web-first presentation output.
 - `../../references/route-c-revealjs.md`: experimental Reveal.js route for C-live, C-export, and C-hybrid-export.
 - `../../references/route-c-experiment-plan.md`: planned Route C experiment batches, including C-live, C-export, C-hybrid-export, C-fragment-export, C-component-export, and native reconstruction spike.
+- `../../references/phase-snapshot-2026-06-26.md`: current freeze-point summary of route decisions, experiment findings, artifacts, and near-term gaps.
 - `../../references/route-a-validation.md`: first Route A editable-PPTX validation result and next validation step.
 - `../../references/source-material-plan.md`: plan for inspecting future PPT/PDF source batches and turning repeated cybozu-style elements into reusable editable assets.
 - `../../references/source-quality-assessment.md`: judgment that the PPTX corpus is useful for brand cues but not a design-quality benchmark.

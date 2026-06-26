@@ -45,17 +45,19 @@ Use Route C when:
 - the user can present from a local browser or wants a live demo-like experience;
 - a PPTX export is still useful for sharing, archive, or customer handoff.
 
-Route C has three delivery modes:
+Route C has five tested or planned delivery modes:
 
 - **C-live:** run a local server and present in the browser. This preserves motion and interaction.
 - **C-export:** screenshot each Reveal.js slide and package the screenshots as full-slide PPTX images.
 - **C-hybrid-export:** screenshot each Reveal.js slide as a background, then add a small editable PPT overlay layer for titles, logos, customer names, product names, CTAs, legal notes, or page marks.
+- **C-fragment-export:** export selected Reveal fragment states as separate PPTX pages when each state changes presenter meaning.
+- **C-component-export:** export selected web-rendered UI/status/process components into otherwise native PPT pages.
 
 See `route-c-revealjs.md` before implementation. Route C should be evaluated separately from B-hybrid because the source of visual quality is browser rendering rather than image generation.
 
 ## Current Direction
 
-For cybozu-style business decks, prioritize Route A for maintainable information pages, B-hybrid for high-impact static proposal pages, and Route C for experimental motion/web-first presentations. The immediate work is not to invent a new rendering engine, but to learn how cybozu-style elements are drawn:
+For cybozu-style business decks, prioritize Route A for maintainable information pages, B-hybrid for high-impact static proposal pages, and Route C for experimental motion/web-first presentations or web-rendered components. The immediate work is not to invent a new rendering engine, but to learn how cybozu-style elements are drawn:
 
 - character/person assets and poses;
 - yellow section devices, ribbons, labels, badges, and tabs;
